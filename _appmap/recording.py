@@ -95,7 +95,7 @@ def write_appmap(
         part = NAME_MAX - len(APPMAP_SUFFIX) - 1 - HASH_LEN
         appmap_fname = appmap_fname[:part] + "-" + name_hash(appmap_fname[part:])[:HASH_LEN]
     filename = appmap_fname + APPMAP_SUFFIX
-
+    filename = filename.replace(":", "-") ### REQUIRED FOR WINDOWS
     basedir = basedir / recorder_type
     basedir.mkdir(parents=True, exist_ok=True)
 
